@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -70,7 +71,7 @@ func b() {
 func convertInput() []int {
 	data, err := os.ReadFile("./input/Day1.txt")
 	if err != nil {
-		fmt.Errorf(err.Error())
+		log.Fatal(err)
 	}
 
 	sa := strings.Split(string(data), "\n")
@@ -78,7 +79,7 @@ func convertInput() []int {
 	for i := range sa {
 		res, err := strconv.Atoi(sa[i])
 		if err != nil {
-			fmt.Errorf(err.Error())
+			log.Fatal(err)
 		}
 		input = append(input, res)
 	}
