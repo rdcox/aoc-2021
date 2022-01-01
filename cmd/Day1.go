@@ -18,13 +18,15 @@ import (
 var Day1Cmd = &cobra.Command{
 	Use:   "Day1",
 	Short: "Day 1: Sonar Sweep",
-	Long: `Day 1: Sonar Sweep
-	Link: https://adventofcode.com/2021/day/1`,
+	Long: `
+	Day 1: Sonar Sweep
+	Link: https://adventofcode.com/2021/day/1
+	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Day 1 - Part A")
-		a()
+		Day1a()
 		fmt.Println("Day 1 - Part B")
-		b()
+		Day1b()
 	},
 }
 
@@ -42,7 +44,7 @@ func init() {
 	// Day1Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-func a() {
+func Day1a() {
 	input := convertInput()
 
 	increases := 0
@@ -54,7 +56,7 @@ func a() {
 	fmt.Printf("Num. Increases: %d\n", increases)
 }
 
-func b() {
+func Day1b() {
 	input := convertInput()
 
 	increases := 0
