@@ -79,5 +79,37 @@ func Day2a() {
 }
 
 func Day2b() {
+	// TODO: copy/pasted this whole block from part A... gross
+	data, err := os.ReadFile("./input/Day2.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
 
+	hzPos := 0
+	depPos := 0
+	aim := 0
+	// TODO: Unnecessary to compile 2 regexes
+	dirPat, _ := regexp.Compile(`[a-z]+`)
+	magPat, _ := regexp.Compile(`\d+`)
+	sa := strings.Split(string(data), "\n")
+	for i := range sa {
+		direction := dirPat.FindString(sa[i])
+		magnitude, err := strconv.Atoi(magPat.FindString(sa[i]))
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		switch direction {
+		case "forward":
+			hzPos += magnitude
+			depPos += aim * magnitude
+		case "down":
+			aim += magnitude
+		case "up":
+			aim -= magnitude
+		}
+	}
+
+	fmt.Printf("Product of depth & horizontal pos w/aim: %d\n", hzPos*depPos)
 }
